@@ -79,7 +79,7 @@
 
 # ## Set the event name to choose event and the plot type
 
-# In[1]:
+# In[3]:
 
 
 #-- SET ME   Tutorial should work with most binary black hole events
@@ -96,7 +96,7 @@ plottype = "png"
 #plottype = "pdf"
 
 
-# In[2]:
+# In[4]:
 
 
 # Standard python numerical analysis imports:
@@ -121,7 +121,7 @@ from ligotools import utils
 
 # ### Read the event properties from a local json file (download in advance):
 
-# In[3]:
+# In[5]:
 
 
 # Read the event properties from a local json file
@@ -142,7 +142,7 @@ except:
     quit()
 
 
-# In[4]:
+# In[6]:
 
 
 # Extract the parameters for the desired event:
@@ -160,7 +160,7 @@ print(event)
 # ## Read in the data
 # We will make use of the data, and waveform template, defined above.
 
-# In[5]:
+# In[7]:
 
 
 #----------------------------------------------------------------
@@ -188,7 +188,7 @@ except:
 
 # ## First look at the data from H1 and L1
 
-# In[6]:
+# In[8]:
 
 
 # both H1 and L1 will have the same time vector, so:
@@ -210,7 +210,7 @@ print("For L1, {0} out of {1} seconds contain usable DATA".format(bits.sum(), le
  
 
 
-# In[7]:
+# In[9]:
 
 
 # plot +- deltat seconds around the event:
@@ -247,7 +247,7 @@ if make_plots:
 # There's a signal in these data! 
 # For the moment, let's ignore that, and assume it's all noise.
 
-# In[8]:
+# In[10]:
 
 
 make_psds = 1
@@ -313,7 +313,7 @@ if make_plots:
 # B. Allen et al., PHYSICAL REVIEW D 85, 122006 (2012) ; http://arxiv.org/abs/gr-qc/0509116
 # 
 
-# In[9]:
+# In[11]:
 
 
 BNS_range = 1
@@ -402,7 +402,7 @@ if BNS_range:
 # 
 # We will plot the whitened strain data, along with the signal template, after the matched filtering section, below.
 
-# In[10]:
+# In[12]:
 
 
 # function to whiten data
@@ -437,7 +437,7 @@ if whiten_data:
 # 
 # Now let's plot a short time-frequency spectrogram around our event:
 
-# In[11]:
+# In[13]:
 
 
 if make_plots:
@@ -485,7 +485,7 @@ if make_plots:
 # 
 # Now let's zoom in on where we think the signal is, using the whitened data, in the hope of seeing a chirp:
 
-# In[12]:
+# In[14]:
 
 
 if make_plots:
@@ -531,7 +531,7 @@ if make_plots:
 # 
 # As noted above, the results won't be identical to what is in the LIGO-Virgo papers, since we're skipping many subtleties, such as combining many consistent templates.
 
-# In[13]:
+# In[15]:
 
 
 # read in the template (plus and cross) and parameters for the theoretical waveform
@@ -544,7 +544,7 @@ except:
     quit()
 
 
-# In[14]:
+# In[16]:
 
 
 # extract metadata from the template file:
@@ -673,7 +673,7 @@ if make_plots:
 # GW150914: First results from the search for binary black hole coalescence with Advanced LIGO,
 # The LIGO Scientific Collaboration, the Virgo Collaboration, http://arxiv.org/abs/1602.03839
 
-# In[15]:
+# In[20]:
 
 
 # -- To calculate the PSD of the data, choose an overlap and a window (common to all detectors)
@@ -876,7 +876,7 @@ print(fna)
 Audio(fna)
 
 
-# In[18]:
+# In[19]:
 
 
 fna = 'audio/' + eventname+"_H1_whitenbp.wav"
@@ -890,7 +890,7 @@ Audio(fna)
 # 
 # The code below will shift the data up by 400 Hz (by taking an FFT, shifting/rolling the frequency series, then inverse fft-ing). The resulting sound file will be noticibly more high-pitched, and the signal will be easier to hear.
 
-# In[19]:
+# In[20]:
 
 
 # function that shifts frequency of a band-passed signal
@@ -929,7 +929,7 @@ utils.write_wavfile('audio/' +eventname+"_template_shifted.wav",int(fs), templat
 
 # ### Listen to the frequency-shifted template and data
 
-# In[20]:
+# In[21]:
 
 
 fna = 'audio/' +eventname+"_template_shifted.wav"
@@ -937,7 +937,7 @@ print(fna)
 Audio(fna)
 
 
-# In[21]:
+# In[22]:
 
 
 fna = 'audio/' +eventname+"_H1_shifted.wav"
@@ -953,7 +953,7 @@ Audio(fna)
 # 
 # We also unpack the DQ and HW injection bits to check what their values are.
 
-# In[22]:
+# In[23]:
 
 
 data_segments = 1
@@ -1007,7 +1007,7 @@ if data_segments:
 
 # ## Construct a csv file containing the whitened data and template
 
-# In[23]:
+# In[25]:
 
 
 '''
